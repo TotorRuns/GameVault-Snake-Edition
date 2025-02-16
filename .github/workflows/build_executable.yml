@@ -32,8 +32,12 @@ jobs:
       run: |
         pyinstaller --onefile main.py --add-data "bin;bin"  # Adjust the command to include the /bin folder
 
+    - name: Zip the artifacts
+      run: |
+        powershell Compress-Archive -Path dist\* -DestinationPath dist\executables.zip  # Zip the contents of the dist folder
+
     - name: Archive the build
       uses: actions/upload-artifact@v3
       with:
         name: executable
-        path: dist\**\*  # Upload all files in the dist directory
+        path: dist\executables.zip  # Upload the zipped file
