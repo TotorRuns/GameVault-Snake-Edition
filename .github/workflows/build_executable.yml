@@ -37,7 +37,7 @@ jobs:
         powershell Compress-Archive -Path dist\* -DestinationPath dist\executables.zip  # Zip the contents of the dist folder
 
     - name: Archive the build
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: executable
         path: dist\executables.zip  # Upload the zipped file
